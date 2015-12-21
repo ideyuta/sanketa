@@ -1,0 +1,4 @@
+{
+  "plugins": ["flow-comments", "syntax-flow"],
+  "presets": ["es2015"]
+}
