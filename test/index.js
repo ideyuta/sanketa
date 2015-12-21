@@ -17,6 +17,10 @@ describe('sanketa', () => {
     assert(sanketa('characters', {r: true}) === 'c,har,act,ers');
   });
 
+  it('should finally the separator no', () => {
+    assert(sanketa('character') === 'cha,rac,ter');
+  });
+
   describe('should return texts of custom sepalates', () => {
     it('is Number or String', () => {
       assert(sanketa('characters', {s: 'A'}) === 'chaAracAterAs');
