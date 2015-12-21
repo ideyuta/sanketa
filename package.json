@@ -1,7 +1,7 @@
 {
   "name": "sanketa",
   "description": "sanketa inserts every three digits.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "ideyuta <ide.yuta@gmail.com>",
   "bugs": {
     "url": "https://github.com/ideyuta/sanketa/issues"
