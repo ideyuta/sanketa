@@ -10,7 +10,7 @@
  */
 export default function sanketa(rawChars: (number|string), opts: Object = {}): string {
   const digits = 3;
-  const sepalater = opts.s ? opts.s : ',';
+  const separater = opts.s ? opts.s : ',';
   let chars = rawChars;
   let snum = 0;
 
@@ -19,11 +19,11 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
   chars = chars.split('').map((c, key, map) => {
     if (key < map.length - 1) {
       if (key % digits === 2) {
-        if (typeof sepalater === 'object' && sepalater instanceof Array) {
-          snum = snum < sepalater.length ? snum + 1 : 1;
-          return c + sepalater[snum - 1];
+        if (typeof separater === 'object' && separater instanceof Array) {
+          snum = snum < separater.length ? snum + 1 : 1;
+          return c + separater[snum - 1];
         }
-        return c + sepalater;
+        return c + separater;
       }
     }
     return c;
