@@ -16,13 +16,15 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
 
   chars = typeof chars === 'number' ? chars.toString() : chars;
   chars = opts.r ? reverse(chars) : chars;
-  chars = chars.split('').map((c, key) => {
-    if (key % digits === 2) {
-      if (typeof sepalater === 'object' && sepalater instanceof Array) {
-        snum = snum < sepalater.length ? snum + 1 : 1;
-        return c + sepalater[snum - 1];
+  chars = chars.split('').map((c, key, map) => {
+    if (key < map.length - 1) {
+      if (key % digits === 2) {
+        if (typeof sepalater === 'object' && sepalater instanceof Array) {
+          snum = snum < sepalater.length ? snum + 1 : 1;
+          return c + sepalater[snum - 1];
+        }
+        return c + sepalater;
       }
-      return c + sepalater;
     }
     return c;
   }).join('');
