@@ -40,5 +40,5 @@ sanketa('sushi', {r: true, s: '🍣'}); // => 'su🍣shi'
 
 **Multi Sepalaters:**
 ```js
-sanketa('sushi!sushi!', {s: ['🍣', '🍵']}); // => 'sus🍣hi!🍵sus🍣hi!🍵'
+sanketa('sushi!sushi!', {s: ['🍣', '🍵']}); // => 'sus🍣hi!🍵sus🍣hi!'
 ```
