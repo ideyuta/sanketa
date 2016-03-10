@@ -15,7 +15,7 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
   let snum = 0;
 
   chars = typeof chars === 'number' ? chars.toString() : chars;
-  chars = opts.r ? reverse(chars) : chars;
+  chars = opts.r ? chars : reverse(chars);
   chars = Array.from(chars).map((c, key, map) => {
     if (key < map.length - 1) {
       if (key % digits === 2) {
@@ -28,7 +28,7 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
     }
     return c;
   }).join('');
-  return opts.r ? reverse(chars) : chars;
+  return opts.r ? chars : reverse(chars);
 }
 
 /**
