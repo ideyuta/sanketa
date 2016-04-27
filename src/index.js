@@ -4,18 +4,18 @@
  *
  * @param {number|string} rawChars - raw chars
  * @param {Object} [opts] - options
- * @param {boolean} [opts.r] - reverse flag
- * @param {number|string} [opts.s] - sepalater
+ * @param {boolean} [opts.reverse] - reverse flag
+ * @param {number|string} [opts.sepalater] - sepalater
  * @return {string}
  */
 export default function sanketa(rawChars: (number|string), opts: Object = {}): string {
   const digits = 3;
-  const separater = opts.s ? opts.s : ',';
+  const separater = opts.sepalater ? opts.sepalater : ',';
   let chars = rawChars;
   let snum = 0;
 
   chars = typeof chars === 'number' ? chars.toString() : chars;
-  chars = opts.r ? chars : reverse(chars);
+  chars = opts.reverse ? chars : reverse(chars);
   chars = Array.from(chars).map((c, key, map) => {
     if (key < map.length - 1) {
       if (key % digits === 2) {
@@ -28,7 +28,7 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
     }
     return c;
   }).join('');
-  return opts.r ? chars : reverse(chars);
+  return opts.reverse ? chars : reverse(chars);
 }
 
 /**
