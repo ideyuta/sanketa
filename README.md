@@ -30,17 +30,25 @@ sanketa('sushi'); // => 'su,shi'
 **Reverse:**
 
 ```js
-sanketa(12345, {r: true}); // => '123,45'
-sanketa('sushi', {r: true}); // => 'sus,hi'
+sanketa(12345, {reverse: true}); // => '123,45'
+sanketa('sushi', {reverse: true}); // => 'sus,hi'
 ```
 
 **Custom Sepalater:**
 ```js
-sanketa('sushi', {s: '🍣'}); // => 'su🍣shi'
-sanketa('sushi', {r: true, s: '🍣'}); // => 'sus🍣hi'
+sanketa('sushi', {sepalater: '🍣'}); // => 'su🍣shi'
+sanketa('sushi', {reverse: true, sepalater: '🍣'}); // => 'sus🍣hi'
 ```
 
 **Multi Sepalaters:**
 ```js
-sanketa('sushi!sushi!', {s: ['🍣', '🍵']}); // => 'sus🍣hi!🍵sus🍣hi!'
+sanketa('sushi!sushi!', {sepalater: ['🍣', '🍵']}); // => 'sus🍣hi!🍵sus🍣hi!'
+```
+
+**Sign of number:**
+```js
+sanketa(12345); // => '12,345'
+sanketa(-12345); // => '-12,345'
+sanketa(12345, {signOfNumber: true}); // => '+12,345'
+sanketa(-12345, {signOfNumber: true}); // => '-12,345'
 ```
