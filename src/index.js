@@ -6,6 +6,7 @@
  * @param {Object} [opts] - options
  * @param {boolean} [opts.reverse] - reverse flag
  * @param {number|string} [opts.sepalater] - sepalater
+ * @param {boolean} [opts.signOfNumber] - if true, put a signed numbers
  * @return {string}
  */
 export default function sanketa(rawChars: (number|string), opts: Object = {}): string {
@@ -14,7 +15,7 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
   let chars = rawChars;
   let snum = 0;
 
-  chars = typeof chars === 'number' ? chars.toString() : chars;
+  chars = typeof chars === 'number' ? Math.abs(chars).toString() : chars;
   chars = opts.reverse ? chars : reverse(chars);
   chars = Array.from(chars).map((c, key, map) => {
     if (key < map.length - 1) {
@@ -28,7 +29,16 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
     }
     return c;
   }).join('');
-  return opts.reverse ? chars : reverse(chars);
+
+  let results = opts.reverse ? chars : reverse(chars);
+  if (typeof rawChars === 'number') {
+    if (opts.signOfNumber) {
+      results = rawChars < 0 ? `-${results}` : `+${results}`;
+    } else {
+      results = rawChars < 0 ? `-${results}` : results;
+    }
+  }
+  return results;
 }
 
 /**

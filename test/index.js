@@ -32,4 +32,28 @@ describe('sanketa', () => {
       assert(sanketa('characters', {sepalater: ['🍣', '🍵']}) === 'c🍣har🍵act🍣ers');
     });
   });
+
+  describe('should return number of signed', () => {
+    it('flag is true', () => {
+      assert(sanketa(123, {signOfNumber: true}) === '+123');
+      assert(sanketa(-123, {signOfNumber: true}) === '-123');
+      assert(sanketa(12345, {signOfNumber: true}) === '+12,345');
+      assert(sanketa(-12345, {signOfNumber: true}) === '-12,345');
+    });
+
+    it('flag is false', () => {
+      assert(sanketa(123) === '123');
+      assert(sanketa(-123) === '-123');
+      assert(sanketa(12345) === '12,345');
+      assert(sanketa(-12345) === '-12,345');
+    });
+  });
+
+  it('if typeof string should not return number of signed', () => {
+    assert(sanketa('123', {signOfNumber: true}) === '123');
+    assert(sanketa('-123', {signOfNumber: true}) === '-,123');
+    assert(sanketa('12345', {signOfNumber: true}) === '12,345');
+    assert(sanketa('-12345', {signOfNumber: true}) === '-12,345');
+  });
+
 });
