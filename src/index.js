@@ -1,4 +1,6 @@
 /* @flow */
+import arrayFrom from 'array-from';
+
 /**
  * sanketa
  *
@@ -17,7 +19,7 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
 
   chars = typeof chars === 'number' ? Math.abs(chars).toString() : chars;
   chars = opts.reverse ? chars : reverse(chars);
-  chars = Array.from(chars).map((c, key, map) => {
+  chars = arrayFrom(chars).map((c, key, map) => {
     if (key < map.length - 1) {
       if (key % digits === 2) {
         if (typeof separater === 'object' && separater instanceof Array) {
@@ -48,5 +50,5 @@ export default function sanketa(rawChars: (number|string), opts: Object = {}): s
  * @return {string} reversed chars
  */
 function reverse(chars: string): string {
-  return Array.from(chars).reverse().join('');
+  return arrayFrom(chars).reverse().join('');
 }
