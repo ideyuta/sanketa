@@ -34,5 +34,8 @@
     "flow": "flow check",
     "prepublish": "npm run build",
     "test": "mocha test/index.js --compilers js:babel-core/register"
+  },
+  "dependencies": {
+    "array-from": "^2.1.1"
   }
 }
